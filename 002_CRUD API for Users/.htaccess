@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Handle Front Controller
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Handle API requests
+RewriteRule ^api/(.*)$ api.php?$1 [QSA,L]
