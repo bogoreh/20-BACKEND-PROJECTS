@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Redirect all requests to index.php or redirect.php
+# Except for actual files and directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ redirect.php [L,QSA]
+
+# Security: Protect config and includes directories
+<FilesMatch "\.(ini|log|sh|sql)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
