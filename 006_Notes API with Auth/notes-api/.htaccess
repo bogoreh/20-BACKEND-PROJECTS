@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Redirect all API requests to index.php
+RewriteRule ^api/(.*)$ api/index.php?endpoint=$1 [QSA,L]
+
+# If requested resource exists as file or directory, skip rewriting
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Otherwise, rewrite to index.php
+RewriteRule ^(.*)$ index.php [QSA,L]
