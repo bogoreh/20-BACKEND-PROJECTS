@@ -1,0 +1,1 @@
+<?php require_once '../includes/config.php'; require_once '../includes/helpers.php'; header('Content-Type: application/json'); header('Access-Control-Allow-Origin: *'); header('Access-Control-Allow-Methods: DELETE, POST'); header('Access-Control-Allow-Headers: Content-Type');  ?>

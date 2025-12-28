@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload API</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-cloud-upload-alt"></i> Secure File Upload API</h1>
+            <p class="subtitle">Upload, manage, and share files securely</p>
+        </header>
+
+        <div class="upload-container">
+            <div class="upload-area" id="uploadArea">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                <h3>Drag & Drop Files Here</h3>
+                <p class="upload-text">or click to browse files</p>
+                <p class="upload-limits">Max file size: 10MB • Allowed: Images, PDF, DOC, TXT</p>
+                <input type="file" id="fileInput" multiple accept=".jpg,.jpeg,.png,.gif,.webp,.pdf,.doc,.docx,.txt">
+                <button class="browse-btn" onclick="document.getElementById('fileInput').click()">
+                    <i class="fas fa-folder-open"></i> Browse Files
+                </button>
+            </div>
+
+            <div class="selected-files" id="selectedFiles">
+                <h3>Selected Files (Max 5)</h3>
+                <div id="fileList"></div>
+            </div>
+
+            <div class="upload-actions">
+                <button class="btn upload-btn" id="uploadBtn" disabled>
+                    <i class="fas fa-upload"></i> Upload Files
+                </button>
+                <button class="btn cancel-btn" id="cancelBtn">
+                    <i class="fas fa-times"></i> Clear All
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-header">
+                <h3><i class="fas fa-tasks"></i> Upload Progress</h3>
+                <span id="progressText">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div id="uploadResults"></div>
+        </div>
+
+        <div class="file-manager">
+            <div class="section-header">
+                <h2><i class="fas fa-folder-open"></i> Uploaded Files</h2>
+                <button class="btn refresh-btn" id="refreshBtn">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+            <div class="files-grid" id="filesGrid">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i> Loading files...
+                </div>
+            </div>
+        </div>
+
+        <div class="api-info">
+            <h3><i class="fas fa-code"></i> API Endpoints</h3>
+            <div class="endpoints">
+                <div class="endpoint">
+                    <span class="method post">POST</span>
+                    <code>/api/upload.php</code>
+                    <span>Upload files</span>
+                </div>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <code>/api/get-files.php</code>
+                    <span>Get all files</span>
+                </div>
+                <div class="endpoint">
+                    <span class="method delete">DELETE</span>
+                    <code>/api/delete-file.php</code>
+                    <span>Delete a file</span>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>File Upload API v1.0 &copy; 2024 | Built with PHP</p>
+            <p class="features">
+                <span><i class="fas fa-shield-alt"></i> Secure Uploads</span>
+                <span><i class="fas fa-check-circle"></i> File Validation</span>
+                <span><i class="fas fa-expand-arrows-alt"></i> Responsive Design</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-check-circle success"></i> Upload Successful!</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="successMessage">Your files have been uploaded successfully.</p>
+                <div id="successFiles"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn ok-btn">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
