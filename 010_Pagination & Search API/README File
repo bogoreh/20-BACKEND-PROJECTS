@@ -1,0 +1,20 @@
+# Pagination & Search API
+
+A complete PHP API solution with pagination, filtering, and search functionality.
+
+## Features
+
+- ✅ Pagination with customizable page size
+- ✅ Advanced filtering (category, price range)
+- ✅ Full-text search across multiple fields
+- ✅ Sorting by any field
+- ✅ Clean RESTful API design
+- ✅ Modern responsive frontend
+- ✅ Real-time API response preview
+
+## Installation
+
+1. **Clone or download the project**
+   ```bash
+   git clone https://github.com/yourusername/pagination-api.git
+   cd pagination-api

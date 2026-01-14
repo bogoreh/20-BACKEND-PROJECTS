@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product API Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-store"></i> Product API Dashboard</h1>
+            <p class="subtitle">Filter, search, and paginate through product data</p>
+        </header>
+
+        <div class="dashboard">
+            <!-- Search Section -->
+            <div class="card">
+                <h2><i class="fas fa-search"></i> Search Products</h2>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search by name, description, or category...">
+                    <button id="searchBtn"><i class="fas fa-search"></i> Search</button>
+                </div>
+                <div id="searchResults" class="hidden">
+                    <h3>Search Results</h3>
+                    <div id="searchContent"></div>
+                </div>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="card">
+                <h2><i class="fas fa-filter"></i> Filter Products</h2>
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="category">Category:</label>
+                        <select id="category">
+                            <option value="">All Categories</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="minPrice">Price Range:</label>
+                        <div class="price-range">
+                            <input type="number" id="minPrice" placeholder="Min" min="0" step="0.01">
+                            <span>to</span>
+                            <input type="number" id="maxPrice" placeholder="Max" min="0" step="0.01">
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="sortBy">Sort By:</label>
+                        <select id="sortBy">
+                            <option value="id">ID</option>
+                            <option value="name">Name</option>
+                            <option value="price">Price</option>
+                            <option value="category">Category</option>
+                        </select>
+                        <select id="sortOrder">
+                            <option value="ASC">Ascending</option>
+                            <option value="DESC">Descending</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="limit">Items per page:</label>
+                        <select id="limit">
+                            <option value="5">5</option>
+                            <option value="10" selected>10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                    
+                    <button id="applyFilters" class="btn-primary">
+                        <i class="fas fa-sync-alt"></i> Apply Filters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Products Display -->
+            <div class="card">
+                <h2><i class="fas fa-boxes"></i> Products</h2>
+                <div id="productsContainer">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i> Loading products...
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div id="pagination" class="pagination hidden">
+                    <button id="prevPage" class="page-btn">
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    
+                    <div id="pageInfo" class="page-info">
+                        Page 1 of 1
+                    </div>
+                    
+                    <button id="nextPage" class="page-btn">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- API Response -->
+            <div class="card">
+                <h2><i class="fas fa-code"></i> API Response</h2>
+                <div class="api-info">
+                    <h3>Endpoints:</h3>
+                    <ul>
+                        <li><code>GET /api/products/</code> - Get all products with filters</li>
+                        <li><code>GET /api/products/search.php?q=search_term</code> - Search products</li>
+                    </ul>
+                    
+                    <div class="response-preview">
+                        <pre id="apiResponse">API response will appear here...</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Product API v1.0 &copy; 2024 | Built with PHP & MySQL</p>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
